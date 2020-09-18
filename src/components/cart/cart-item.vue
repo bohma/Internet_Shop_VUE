@@ -22,7 +22,7 @@
         Quantity
       </div>
       <div class="cart-item__quantity">
-        <a class="cart-item__quantity-btn minus" @click="decrementItem">
+        <a class="cart-item__quantity-btn minus" v-bind:class="{ minusbckgr: cart_item_data.quantity==1 }" @click="decrementItem">
           -
         </a>
         <p class="cart-item__quantity-number">{{ cart_item_data.quantity }}</p>
@@ -109,6 +109,10 @@ export default {
     user-select: none;
     &.minus {
       padding-bottom: 4px;
+    }
+    &.minusbckgr{
+      background: #aeaeae;
+      cursor: auto;
     }
   }
   &__delete {
