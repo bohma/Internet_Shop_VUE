@@ -1,0 +1,18 @@
+@import './veriables.scss';
+
+.btn {
+    display: inline-block;
+    padding: $padding $padding*2;
+    background: $green-bg;
+    color: #ffffff;
+    border: 0;
+    border-radius: $radius;
+    cursor: pointer;
+    &:focus{
+        outline: none;
+    }
+}
+
+.back {
+    margin-bottom: 30px;
+}
