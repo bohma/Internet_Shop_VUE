@@ -1,15 +1,8 @@
 <template>
   <div class="catalog">
-    <!-- <router-link :to="{name: 'cart', params: {cart_data: CART}}">
-      <div class="catalog__link_to_cart">
-        <img
-          class="catalog__image-cart"
-          v-bind:src="require('../../assets/images/cart.png')"
-          alt="img"
-        />
-        {{CART.length}}
-      </div>
-    </router-link>-->
+    <!-- <catalog-item-view 
+    @addToCart="addToCartFromItemView"
+    /> -->
       <catalog-item
         v-for="product in PRODUCTS"
         :key="product.article"
@@ -24,12 +17,14 @@
 //  @sendArticle="shpwChildArticleInConsole" Связываем ЭМИТ из ребёнка и получаем данные в указаный в родителе(здесь) метод
 
 import CatalogItem from "./catalog-item";
+// import CatalogItemView from "../../views/catalog-item-view";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "catalog",
   components: {
     CatalogItem,
+    // CatalogItemView
   },
   computed: {
     ...mapGetters(["PRODUCTS", "CART"]),
@@ -50,12 +45,5 @@ export default {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-  // &__link_to_catalog {
-  //   position: absolute;
-  //   top: 30px;
-  //   right: 20px;
-  //   padding: $padding * 2;
-  //   border: solid 1px #aeaeae;
-  // }
 }
 </style>

@@ -74,7 +74,6 @@ export default {
     width: 30px;
     height: 100%;
     position: relative;
-
     img {
       width: 100%;
       height: 100%;
@@ -94,6 +93,9 @@ export default {
       background-color: #f00;
       border-radius: 50%;
     }
+  }
+  &__cart:hover{
+    
   }
 }
 </style>

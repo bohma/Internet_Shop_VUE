@@ -71,7 +71,9 @@ export default {
   }
 
   &__add {
-    
+    &:hover{
+      background: $green-bg-hover;
+    }
   }
 }
 </style>

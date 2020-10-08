@@ -6,29 +6,25 @@
       alt="img"
     />
     <div class="cart-item__info">
-      <div class="cart-item__title">
-        Name
-      </div>
+      <div class="cart-item__title">Name</div>
       <p>{{ cart_item_data.name }}</p>
     </div>
     <div class="cart-item__info">
-      <div class="cart-item__title">
-        Price
-      </div>
+      <div class="cart-item__title">Price</div>
       <p>{{ cart_item_data.price }}$</p>
     </div>
     <div class="cart-item__info">
-      <div class="cart-item__title">
-        Quantity
-      </div>
+      <div class="cart-item__title">Quantity</div>
       <div class="cart-item__quantity">
-        <a class="cart-item__quantity-btn minus" v-bind:class="{ minusbckgr: cart_item_data.quantity==1 }" @click="decrementItem">
+        <a
+          class="cart-item__quantity-btn minus"
+          v-bind:class="{ minusbckgr: cart_item_data.quantity == 1 }"
+          @click="decrementItem"
+        >
           -
         </a>
         <p class="cart-item__quantity-number">{{ cart_item_data.quantity }}</p>
-        <a class="cart-item__quantity-btn " @click="incrementItem">
-          +
-        </a>
+        <a class="cart-item__quantity-btn" @click="incrementItem"> + </a>
       </div>
     </div>
     <div class="cart-item__delete-btn">
@@ -110,10 +106,12 @@ export default {
     &.minus {
       padding-bottom: 4px;
     }
-    &.minusbckgr{
+    &.minusbckgr {
       background: #aeaeae;
       cursor: auto;
     }
+  }
+  &__quantity-btn:hover {
   }
   &__delete {
   }

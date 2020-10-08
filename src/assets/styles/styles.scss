@@ -12,6 +12,9 @@
         outline: none;
     }
 }
+.btn:hover{
+    background: $green-bg-hover;
+}
 
 .back {
     margin-bottom: 30px;
