@@ -3,17 +3,21 @@
 .btn {
     display: inline-block;
     padding: $padding $padding*2;
-    background: $green-bg;
+    background: #000000;
     color: #ffffff;
     border: 0;
     border-radius: $radius;
+    transition: .5s;
     cursor: pointer;
     &:focus{
         outline: none;
     }
 }
 .btn:hover{
-    background: $green-bg-hover;
+    background: #ffffff;
+    color: #000000;
+    outline: 2px solid; /* Пунктирная рамка */
+    outline-offset: -2px; /* Выводим рамку внутри элемента */  
 }
 
 .back {

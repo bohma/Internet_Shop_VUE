@@ -53,9 +53,10 @@ export default {
   box-shadow: 0 0 5px grey;
   margin: 0 15px;
   margin-bottom: 30px;
-  
+
   &__image {
-    height: 240px;
+    height: 230px;
+    margin-bottom: 10px;
     img {
       height: 100%;
       object-fit: contain;
@@ -63,15 +64,15 @@ export default {
   }
 
   &__name {
-
+    margin-bottom: 10px;
   }
 
   &__price {
-
+    margin-bottom: 10px;
   }
 
   &__add {
-    &:hover{
+    &:hover {
       background: $green-bg-hover;
     }
   }

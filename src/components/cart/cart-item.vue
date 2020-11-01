@@ -6,25 +6,34 @@
       alt="img"
     />
     <div class="cart-item__info">
-      <div class="cart-item__title">Name</div>
-      <p>{{ cart_item_data.name }}</p>
+      <div class="cart-item__title">
+        <!-- Name -->
+      </div>
+      <b>{{ cart_item_data.name }}</b>
     </div>
     <div class="cart-item__info">
-      <div class="cart-item__title">Price</div>
+      <div class="cart-item__title">
+        <!-- Price -->
+      </div>
       <p>{{ cart_item_data.price }}$</p>
     </div>
     <div class="cart-item__info">
-      <div class="cart-item__title">Quantity</div>
+      <div class="cart-item__title">
+        <!-- Quantity -->
+      </div>
       <div class="cart-item__quantity">
         <a
           class="cart-item__quantity-btn minus"
-          v-bind:class="{ minusbckgr: cart_item_data.quantity == 1 }"
+          v-bind:class="{
+            minusbckgr: cart_item_data.quantity == 1,
+            minusred: cart_item_data.quantity > 1,
+          }"
           @click="decrementItem"
         >
           -
         </a>
         <p class="cart-item__quantity-number">{{ cart_item_data.quantity }}</p>
-        <a class="cart-item__quantity-btn" @click="incrementItem"> + </a>
+        <a class="cart-item__quantity-btn plus" @click="incrementItem"> + </a>
       </div>
     </div>
     <div class="cart-item__delete-btn">
@@ -69,7 +78,7 @@ export default {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  box-shadow: 0 0 5px grey;
+  // box-shadow: 0 0 2px grey;
   padding: $padding * 3;
   margin-bottom: $margin * 2;
   &__image {
@@ -79,10 +88,10 @@ export default {
   &__info {
     width: 25%;
   }
-  &__title {
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
+  // &__title {
+  //   font-weight: 700;
+  //   margin-bottom: 10px;
+  // }
   &__quantity {
     display: flex;
     justify-content: center;
@@ -98,7 +107,7 @@ export default {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #26ae68;
+    background: #000000;
     color: #fff;
     font-size: 16px;
     line-height: 0;
@@ -106,12 +115,23 @@ export default {
     &.minus {
       padding-bottom: 4px;
     }
+    &.minusred {
+      &:hover {
+        background: red;
+      }
+    }
     &.minusbckgr {
       background: #aeaeae;
       cursor: auto;
     }
+    &.plus {
+      &:hover {
+        background: #26ae68;
+      }
+    }
   }
   &__quantity-btn:hover {
+    //
   }
   &__delete {
   }

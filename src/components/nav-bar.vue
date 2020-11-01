@@ -51,7 +51,8 @@ export default {
 </script>
 <style lang="scss">
 .nav {
-  background: #26ae68;
+  // background: #26ae68;
+  background: #000000;
 
   &__container {
     display: flex;
