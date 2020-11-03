@@ -173,13 +173,14 @@ export default {
     checkForm() {
       this.$v.form.$touch();
       if (!this.$v.form.$error) {
-        alert("Ваша заявка оставлена!");
-        this.toSend = `name: ${this.form.company}%0Atel: ${this.form.email}%0Acountry: ${this.form.tel}%0A`;
+        let titles = this.cart_data.map(item => "%0A" + item.name + " - " + item.quantity + " шт.")
+        this.toSend = `name: ${this.form.company}%0Atel: ${this.form.email}%0Acountry: ${this.form.tel}%0Aorder: %0A${titles}%0A`;
         axios({
           method: "post",
           url: `https://api.telegram.org/bot${this.token}/sendMessage?chat_id=${this.chatId}&text=${this.toSend}`,
           data: {},
         });
+        alert("Ваша заявка оставлена!");
         this.form.company = "";
         this.form.email = "";
         this.form.tel = "";
@@ -202,6 +203,7 @@ export default {
 .cart {
   max-width: 700px;
   margin: 0 auto;
+  margin-bottom: 50px;
 
   &__content {
   }
@@ -213,12 +215,6 @@ export default {
   }
 
   &__item {
-    // overflow: auto; /* Добавляем полосы прокрутки */
-    // width: 100%; /* Ширина блока */
-    // max-height: 500px; /* Высота блока */
-    // padding: 2px; /* Поля вокруг текста */
-    // border: 2px solid #000000;
-    // border-radius: 10px;
   }
   &__total {
     text-align: right;
@@ -227,24 +223,7 @@ export default {
     font-size: 18px;
     margin-top: 30px;
   }
-
-  // &__total {
-  //   position: fixed;
-  //   bottom: 0;
-  //   right: 0;
-  //   left: 0;
-  //   padding: $padding * 3;
-  //   display: flex;
-  //   justify-content: center;
-  //   background: $green-bg;
-  //   color: #fff;
-  //   font-size: 20px;
-  //   &_name {
-  //     margin-right: $margin * 2;
-  //   }
-  // }
 }
-
 
 .inputs {
   display: flex;
@@ -254,10 +233,10 @@ export default {
     margin-bottom: 50px;
     padding-right: 24px;
     &-item {
-      border: none;
+      border: .5px solid #000000;
       width: 260px;
       height: 55px;
-      border-radius: 5px;
+      border-radius: 0;
       padding-left: 18px;
       &:focus {
         outline: none;
@@ -280,7 +259,7 @@ export default {
   height: 55px;
   border-radius: 5px;
   border: none;
-  background: #001515;
+  background: #000000;
   color: #ffffff;
   font-family: "Gilroy", sans-serif;
   font-size: 18px;
