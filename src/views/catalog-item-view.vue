@@ -1,33 +1,35 @@
 <template>
-  <div class="page__item">
-    <div class="page__item-image">
-      <img
-        class="catalog-item__image"
-        v-bind:src="require('../assets/images/' + cartItemPage.image)"
-        alt="img"
-      />
-    </div>
-    <div class="page__item-info">
-      {{ cartItemPage.name }}
-      {{ cartItemPage.price }}
-      {{ cartItemPage.quantity }}
-      <button class="catalog-item__add btn" @click="addToCart">
-        Add to cart
-      </button>
+  <div class="item">
+    <div class="item__content">
+      <div class="">
+        <img
+          class="item__image"
+          v-bind:src="require('../assets/images/' + cartItemPage.image)"
+          alt="img"
+        />
+      </div>
+      <div class="item__info">
+        <div class="item__title">
+          {{ cartItemPage.name }}
+        </div>
+        <div class="item__price">{{ cartItemPage.price }} usd</div>
+        <div class="item__buy">
+          {{ cartItemPage.quantity }}
+          <button class="btn buy-item" @click="addToCart">Добавить в корзину</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "catalog-item",
   components: {},
   data() {
-    return {
-      item: {},
-    };
+    return {};
   },
   computed: {
     ...mapGetters(["PRODUCTS", "CART"]),
@@ -38,14 +40,14 @@ export default {
     },
   },
   methods: {
-    // Метод эмит чтобы пробросить данные родителю. Первый аргумент как будет назваться в родиетеле.Второй что передаём с ребёнка.
+    ...mapActions(["ADD_TO_CART"]),
     addToCart() {
-      this.$emit("addToCartFromItemView", this.product_data);
+      this.ADD_TO_CART(this.cartItemPage);
     },
   },
   mounted() {
     //Если без $ то теряем рективность. $set - Добавляет в наш объект (cart_item_data) item новое свойство с названием 'quantity' и присваевает значение указаное в 3-ем аргументе
-    // this.$set(this.product_data, 'quantity', 1);
+    this.$set(this.cartItemPage, "quantity", 1);
   },
   created: function () {
     return this.$route.params.id;
@@ -55,20 +57,33 @@ export default {
 
 
 <style lang="scss" scoped>
-.catalog-item__image {
-  height: 500px;
-  img {
-    height: 100%;
-    object-fit: contain;
+.item {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 70px;
+  }
+  &__image {
+    height: 400px;
+  }
+  &__info {
+    margin-right: 180px;
+  }
+  &__title {
+    font-size: 26px;
+    // text-transform: uppercase;
+    color: #302f2f;
+    margin-bottom: 40px;
+  }
+  &__price {
+    font-size: 26px;
+    text-transform: uppercase;
+    color: #302f2f;
+    margin-bottom: 40px;
   }
 }
-.page__item {
-  display: flex;
-  justify-content: space-between;
-
-  &-image {
-  }
-  &-info {
-  }
+.buy-item{
+  padding: 20px 60px;
+  font-size: 20px;
 }
 </style>

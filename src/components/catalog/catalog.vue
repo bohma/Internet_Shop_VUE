@@ -17,14 +17,12 @@
 //  @sendArticle="shpwChildArticleInConsole" Связываем ЭМИТ из ребёнка и получаем данные в указаный в родителе(здесь) метод
 
 import CatalogItem from "./catalog-item";
-// import CatalogItemView from "../../views/catalog-item-view";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "catalog",
   components: {
     CatalogItem,
-    // CatalogItemView
   },
   computed: {
     ...mapGetters(["PRODUCTS", "CART"]),
